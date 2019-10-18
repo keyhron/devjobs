@@ -24,12 +24,6 @@ transport.use('compile', hbs({
   extName: '.handlebars'
 }));
 
-/* transport.use('compile', hbs({
-  viewEngine: 'handlebars',
-  viewPath: __dirname + '/../views/emails',
-  extName: '.handlebars'
-})); */
-
 exports.enviar = async (opciones) => {
   const opcionesEmail = {
     from: 'devJobs <noreply@devjobs.com>',

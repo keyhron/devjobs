@@ -29,7 +29,7 @@ const configuracionMulter = {
   limits: {fileSize: 100000},
   storage: fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, __dirname + '../../public/uploads/perfiles')
+      cb(null, __dirname + '/../public/uploads/perfiles')
     },
     filename: (req, file, cb) => {
       const extension = file.mimetype.split('/')[1];
@@ -134,7 +134,20 @@ exports.editarPerfil = async (req, res) => {
     usuario.password = req.body.password;
   }
 
-  // Multer
+  // Si hay imagen anterior y nueva, significa que vamos a borrar la anterior
+  if(req.file && usuario.imagen) {
+    const imagenAnterior = __dirname + `/../public/uploads/grupos/${usuario.imagen}`;
+
+    // Eliminar archivo con fileSystem
+    fs.unlink(imagenAnterior, (error) => {
+      if(error) {
+        console.log(error);
+      }
+      return;
+    })
+  }
+
+  // Multer - Agregar nueva imagen
   if(req.file) {
     usuario.imagen = req.file.filename;
   }
