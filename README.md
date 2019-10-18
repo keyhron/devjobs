@@ -6,6 +6,6 @@ Link del deployment:
 https://devjobs-node.herokuapp.com/
 ```
 
-Para cuenta para iniciar sesión:
+Cuenta para iniciar sesión:
 email: correo@correo.com
 password: 1234
